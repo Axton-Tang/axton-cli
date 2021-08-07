@@ -1,6 +1,6 @@
 {
   "name": "@axton-cli/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "axton-cli core",
   "author": "Axton-Tang <873948360@qq.com>",
   "homepage": "",
@@ -24,6 +24,6 @@
     "test": "echo \"Error: run tests from core\""
   },
   "dependencies": {
-    "@axton-cli/utils": "^1.0.0"
+    "@axton-cli/utils": "^1.0.1"
   }
 }
