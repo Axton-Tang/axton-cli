@@ -1,0 +1,24 @@
+{
+  "name": "@axton-cli/utils",
+  "version": "1.0.0",
+  "description": "axton-cli utils",
+  "author": "Axton-Tang <873948360@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npm.taobao.org/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from utils\""
+  },
+  "dependencies": {
+  }
+}

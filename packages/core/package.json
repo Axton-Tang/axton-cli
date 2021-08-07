@@ -1,0 +1,25 @@
+{
+  "name": "@axton-cli/core",
+  "version": "1.0.0",
+  "description": "axton-cli core",
+  "author": "Axton-Tang <873948360@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/core.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npm.taobao.org/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from core\""
+  },
+  "dependencies": {
+    "@axton-cli/utils": "^1.0.0"
+  }
+}
