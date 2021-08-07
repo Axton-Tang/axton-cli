@@ -1,6 +1,6 @@
 {
   "name": "@axton-cli/utils",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "axton-cli utils",
   "author": "Axton-Tang <873948360@qq.com>",
   "homepage": "",
@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "http://registry.npm.org/",
+    "registry": "http://registry.npmjs.org/",
     "access": "public"
   },
   "scripts": {
