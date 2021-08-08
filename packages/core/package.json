@@ -24,6 +24,6 @@
     "test": "echo \"Error: run tests from core\""
   },
   "dependencies": {
-    "@axton-cli/utils": "^1.0.2"
+    "@axton-cli/utils": "file:../utils"
   }
 }

@@ -3,5 +3,5 @@
 module.exports = utils;
 
 function utils() {
-    // TODO
+    console.log("axton-cli utils");
 }
