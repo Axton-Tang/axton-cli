@@ -24,6 +24,18 @@
     "test": "echo \"Error: run tests from core\""
   },
   "dependencies": {
-    "@axton-cli/utils": "file:../utils"
+    "@axton-cli/get-npm-info": "file:../../utils/get-npm-info",
+    "@axton-cli/log": "file:../../utils/log",
+    "@axton-cli/init": "file:../../commands/init",
+    "colors": "^1.4.0",
+    "commander": "^8.1.0",
+    "dotenv": "^10.0.0",
+    "import-local": "^3.0.2",
+    "minimist": "^1.2.5",
+    "npmlog": "^5.0.0",
+    "path-exists": "^4.0.0",
+    "root-check": "^1.0.0",
+    "semver": "^7.3.5",
+    "user-home": "^3.0.0"
   }
 }

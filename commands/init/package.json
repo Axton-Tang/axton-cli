@@ -1,0 +1,30 @@
+{
+  "name": "@axton-cli/init",
+  "version": "1.0.2",
+  "description": "axton-cli init",
+  "author": "Axton-Tang <873948360@qq.com>",
+  "homepage": "https://github.com/Axton-Tang/axton-cli#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Axton-Tang/axton-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Axton-Tang/axton-cli/issues"
+  }
+}
