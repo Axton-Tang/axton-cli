@@ -1,7 +1,7 @@
 {
-  "name": "@axton-cli/init",
+  "name": "@axton-cli/package",
   "version": "1.0.2",
-  "description": "axton-cli init",
+  "description": "> TODO: description",
   "author": "Axton-Tang <873948360@qq.com>",
   "homepage": "https://github.com/Axton-Tang/axton-cli#readme",
   "license": "ISC",
@@ -28,6 +28,12 @@
     "url": "https://github.com/Axton-Tang/axton-cli/issues"
   },
   "dependencies": {
-    "@axton-cli/log": "file:../../utils/log"
+    "@axton-cli/format-path": "file:../../utils/format-path",
+    "@axton-cli/get-npm-info": "file:../../utils/get-npm-info",
+    "@axton-cli/utils": "file:../../utils/utils",
+    "fs-extra": "^10.0.0",
+    "npminstall": "^4.11.0",
+    "path-exists": "^4.0.0",
+    "pkg-dir": "^5.0.0"
   }
 }

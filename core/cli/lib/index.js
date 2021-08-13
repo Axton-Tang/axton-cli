@@ -12,28 +12,34 @@ const commander = require('commander');
 const pkg = require('../package.json');
 const log = require('@axton-cli/log');
 const init = require('@axton-cli/init');
+const exec = require('@axton-cli/exec');
 
 const {
 	LOWEST_NODE_VERSION,
 	DEFAULT_CLI_HOME
 } = require('./const');
 
-let args, config;
 const program = new commander.Command();
 
 async function core() {
   try {
-		checkPkgVersion();
-		checkNodeVersion()
-		checkRoot();
-		checkUserHome();
-		// checkInputArgs();
-		checkEnv();
-		await checkGlobalUpdate();
+		await prepare();
 		registerCommand();
 	} catch(e) {
 		log.error(e.message);
+		if (program.opts().debug) {
+			console.log(e);
+		}
 	}
+}
+
+async function prepare() {
+	checkPkgVersion();
+	checkNodeVersion()
+	checkRoot();
+	checkUserHome();
+	checkEnv();
+	await checkGlobalUpdate();
 }
 
 function registerCommand () {
@@ -42,11 +48,12 @@ function registerCommand () {
 		.usage('<command> [options]')
 		.version(pkg.version)
 		.option('-d, --debug', '是否开启调试模式', false)
+		.option('-tp, --targetPath <targetPath>', '是否指定本地文件调试路径', '')
 
 	program
 		.command('init [projectName]')
 		.option('-f, --force', '是否强制初始化项目')
-		.action(init);
+		.action(exec);
 	
 	// 开启 debug 模式
 	program.on('option:debug', () => {
@@ -60,6 +67,11 @@ function registerCommand () {
 		log.verbose('进入 debug 模式');
 	})
 
+	program.on('option:targetPath', () => {
+		const options = program.opts();
+		process.env.CLI_TARGET_PATH = options.targetPath;
+	})
+
 	// 对未知命令监听
 	program.on('command:*', (obj) => {
 		console.error(colors.red('未知命令：', obj[0]));
@@ -68,11 +80,6 @@ function registerCommand () {
 			console.log('可用命令：', availableCommands.join(','));
 		}
 	})
-
-	// if(process.argv.length < 3) {
-	// 	program.outputHelp();
-	// 	console.log();
-	// }
 
 	program.parse(process.argv);
 }
@@ -93,8 +100,7 @@ function checkEnv() {
 	dotenv.config({
 		path: path.resolve(userHome, '.env') // 通过此方式设置环境变量，之后可以通过process.env来获取
 	})
-	config = createCliConfig();
-	log.verbose('环境变量', config);
+	createCliConfig();
 }
 
 function createCliConfig() {
@@ -106,24 +112,7 @@ function createCliConfig() {
 	} else {
 		cliConfig['cliHome'] = path.join(userHome, DEFAULT_CLI_HOME);
 	}
-	return cliConfig;
-}
-
-function checkInputArgs() {
-	log.verbose('开始校验输入参数');
-	const minimist = require('minimist');
-	args = minimist(process.argv.slice(2));
-	checkArgs(args);
-	log.verbose('输入参数', args);
-}
-
-function checkArgs(args) {
-	if (args.debug) {
-		process.env.LOG_LEVEL = 'verbose';
-	} else {
-		process.env.LOG_LEVEL = 'info';
-	}
-	log.level = process.env.LOG_LEVEL;
+	process.env.CLI_HOME_PATH = cliConfig.cliHome;
 }
 
 function checkUserHome() {

@@ -1,7 +1,9 @@
 'use strict';
 
-function init(projectName, cmdObj) {
-  console.log('init', projectName, cmdObj.force);
+const log = require('@axton-cli/log');
+
+function init(argv) {
+  log.verbose('init argv', argv);
 }
 
 module.exports = init;
