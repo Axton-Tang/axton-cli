@@ -28,6 +28,13 @@
     "url": "https://github.com/Axton-Tang/axton-cli/issues"
   },
   "dependencies": {
-    "@axton-cli/log": "file:../../utils/log"
+    "@axton-cli/log": "file:../../utils/log",
+    "@axton-cli/utils": "file:../../utils/utils",
+    "@axton-cli/package": "file:../../models/package",
+    "axios": "^0.21.1",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.1.2",
+    "semver": "^7.3.5",
+    "user-home": "^3.0.0"
   }
 }

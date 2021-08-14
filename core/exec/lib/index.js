@@ -52,7 +52,7 @@ async function exec() {
   if (rootFile) {
     try {
       log.verbose('rootFile', rootFile);
-      require(rootFile).call(null, Array.from(arguments));
+      await require(rootFile).call(null, Array.from(arguments));
     } catch(e) {
       log.error(e.message);
     }
