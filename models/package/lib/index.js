@@ -81,8 +81,8 @@ class Package {
           version: latestPackageVersion
         }]
       });
-      this.packageVersion = packageVersion;
     }
+    this.packageVersion = latestPackageVersion;
   }
 
   // 获取入口文件路径（main）

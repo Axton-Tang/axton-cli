@@ -29,10 +29,12 @@
   },
   "dependencies": {
     "@axton-cli/log": "file:../../utils/log",
-    "@axton-cli/utils": "file:../../utils/utils",
     "@axton-cli/package": "file:../../models/package",
+    "@axton-cli/utils": "file:../../utils/utils",
     "axios": "^0.21.1",
+    "ejs": "^3.1.6",
     "fs-extra": "^10.0.0",
+    "glob": "^7.1.7",
     "inquirer": "^8.1.2",
     "semver": "^7.3.5",
     "user-home": "^3.0.0"

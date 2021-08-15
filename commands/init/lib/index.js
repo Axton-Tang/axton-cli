@@ -7,11 +7,12 @@ const semver = require('semver');
 const userHome = require('user-home');
 const axios = require('axios');
 const fse = require('fs-extra');
+const ejs = require('ejs');
 const log = require('@axton-cli/log');
 const Package = require('@axton-cli/package');
 const { spinnerStart } = require('@axton-cli/utils');
 
-let projectName, force, projectInfo, templates;
+let projectName, force, projectInfo, templates, selectTemplateInfo, templateNpm;
 
 const BASE_URL = 'http://cli.axton.top/project/getTemplate';
 axios.defaults.timeout = 10000;
@@ -27,6 +28,7 @@ async function init(argv) {
     // 下载模板
     await downloadTemplate();
     // 安装模板
+    await installTemplate();
   }
 }
 
@@ -112,11 +114,12 @@ async function getProjectInfo() {
 }
 
 async function downloadTemplate() {
-  const selectTemplateInfo = templates.find(item => item.npmName === projectInfo.projectTemplate);
+  selectTemplateInfo = templates.find(item => item.npmName === projectInfo.projectTemplate);
+  log.verbose('选中的模板信息', selectTemplateInfo);
   const targetPath = path.resolve(userHome, '.axton-cli', 'template');
   const storeDir = path.resolve(userHome, '.axton-cli', 'template', 'node_modules');
   const { npmName, version } = selectTemplateInfo;
-  const templateNpm = new Package({
+  templateNpm = new Package({
     targetPath,
     storeDir,
     packageName: npmName,
@@ -144,6 +147,56 @@ async function downloadTemplate() {
       spinner.stop(true);
     }
   }
+}
+
+async function installTemplate() {
+  let spinner = spinnerStart('正在安装模板...');
+  try{
+    const templatePath = path.resolve(templateNpm.cacheFilePath, 'template');
+    const targetPath = process.cwd();
+    fse.ensureDirSync(templatePath);
+    fse.ensureDirSync(targetPath);
+    fse.copySync(templatePath, targetPath);
+    ejsRender();
+    spinner.stop(true);
+    log.success('模板安装成功！');
+  } catch (e) {
+    throw e;
+  } finally {
+    spinner.stop(true);
+  }
+}
+
+function ejsRender() {
+  return new Promise((resolve, reject) => {
+    const dir = process.cwd();
+    require('glob')('**', {
+      cwd: dir,
+      ignore: ['node_modules/**', 'public/**', 'src/assets/**'],
+      nodir: true
+    }, (err, files) => {
+      if (err) {
+        reject(err);
+      }
+      Promise.all(files.map(file => {
+        const filePath = path.join(dir, file);
+        return new Promise((res, rej) => {
+          ejs.renderFile(filePath, projectInfo, {}, (err, result) => {
+            if (err) {
+              rej(err);
+            } else {
+              fse.writeFileSync(filePath, result);
+              res(result);
+            }
+          })
+        })
+      })).then(() => {
+        resolve()
+      }).catch(err => {
+        reject(err);
+      })
+    })
+  })
 }
 
 module.exports = init;
