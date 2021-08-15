@@ -1,6 +1,6 @@
 {
   "name": "@axton-cli/core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "axton-cli core",
   "author": "Axton-Tang <873948360@qq.com>",
   "homepage": "",
@@ -24,10 +24,10 @@
     "test": "echo \"Error: run tests from core\""
   },
   "dependencies": {
-    "@axton-cli/get-npm-info": "file:../../utils/get-npm-info",
-    "@axton-cli/log": "file:../../utils/log",
     "@axton-cli/exec": "file:../exec",
+    "@axton-cli/get-npm-info": "file:../../utils/get-npm-info",
     "@axton-cli/init": "file:../../commands/init",
+    "@axton-cli/log": "file:../../utils/log",
     "colors": "^1.4.0",
     "commander": "^8.1.0",
     "dotenv": "^10.0.0",
