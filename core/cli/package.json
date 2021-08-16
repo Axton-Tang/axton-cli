@@ -1,11 +1,16 @@
 {
   "name": "@axton-cli/core",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "前端项目创建脚手架，多种模板可供选择，轻松搭建前端项目框架",
   "author": "Axton-Tang <873948360@qq.com>",
   "homepage": "https://github.com/Axton-Tang/axton-cli#readme",
   "license": "MIT",
-  "keywords": ["lerna", "commander", "inquirer", "ejs"],
+  "keywords": [
+    "lerna",
+    "commander",
+    "inquirer",
+    "ejs"
+  ],
   "main": "lib/core.js",
   "bin": {
     "axton-cli": "bin/index.js"

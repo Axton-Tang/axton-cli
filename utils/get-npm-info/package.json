@@ -1,6 +1,6 @@
 {
   "name": "@axton-cli/get-npm-info",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "get npm info",
   "author": "Axton-Tang <873948360@qq.com>",
   "homepage": "https://github.com/Axton-Tang/axton-cli#readme",
