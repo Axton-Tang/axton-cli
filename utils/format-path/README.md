@@ -1,11 +1,4 @@
 # `@axton-cli/format-path`
 
-> TODO: description
+> axton-cli 脚手架 中用于将window和mac路径统一模块
 
-## Usage
-
-```
-const formatPath = require('@axton-cli/format-path');
-
-// TODO: DEMONSTRATE API
-```

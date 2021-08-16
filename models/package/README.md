@@ -1,11 +1,3 @@
 # `@axton-cli/package`
 
-> TODO: description
-
-## Usage
-
-```
-const package = require('@axton-cli/package');
-
-// TODO: DEMONSTRATE API
-```
+> axton-cli 脚手架 Package 类，用于对包的各种操作

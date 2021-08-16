@@ -3,8 +3,8 @@
   "version": "1.0.3",
   "description": "axton-cli utils",
   "author": "Axton-Tang <873948360@qq.com>",
-  "homepage": "",
-  "license": "ISC",
+  "homepage": "https://github.com/Axton-Tang/axton-cli#readme",
+  "license": "MIT",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",
@@ -16,6 +16,10 @@
   "publishConfig": {
     "registry": "http://registry.npmjs.org/",
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Axton-Tang/axton-cli.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from utils\""

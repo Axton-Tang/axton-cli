@@ -7,7 +7,7 @@
   ],
   "author": "Axton-Tang <873948360@qq.com>",
   "homepage": "https://github.com/Axton-Tang/axton-cli#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",

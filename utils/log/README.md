@@ -1,11 +1,5 @@
 # `@axton-cli/log`
 
-> TODO: description
+> axton-cli 脚手架命令行日志打印模块
 
-## Usage
 
-```
-const log = require('@axton-cli/log');
-
-// TODO: DEMONSTRATE API
-```

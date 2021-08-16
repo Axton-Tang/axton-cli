@@ -1,11 +1,4 @@
 # `@axton-cli/exec`
 
-> TODO: description
+> axton-cli 脚手架执行入口模块
 
-## Usage
-
-```
-const exec = require('@axton-cli/exec');
-
-// TODO: DEMONSTRATE API
-```

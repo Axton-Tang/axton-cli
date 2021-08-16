@@ -8,6 +8,7 @@ const userHome = require('user-home');
 const axios = require('axios');
 const fse = require('fs-extra');
 const ejs = require('ejs');
+const colors = require('colors');
 const log = require('@axton-cli/log');
 const Package = require('@axton-cli/package');
 const { spinnerStart } = require('@axton-cli/utils');
@@ -51,8 +52,11 @@ async function prepare() {
         message: '当前文件夹不为空，是否继续创建项目？'
       });
       if (ifContinue) {
+        const spinner = spinnerStart('正在进行创建前的准备工作，请稍等...');
         fse.emptyDirSync(localPath);
+        spinner.stop(true);
       } else {
+        log.error("项目创建失败！");
         return false;
       }
     }
@@ -88,7 +92,7 @@ async function getProjectInfo() {
     type: 'input',
     name: 'projectVersion',
     message: '请输入项目版本号',
-    default: '1.0.0',
+    default: '0.1.0',
     validate: function(v) {
       return !!semver.valid(v);
     },
@@ -160,6 +164,7 @@ async function installTemplate() {
     ejsRender();
     spinner.stop(true);
     log.success('模板安装成功！');
+    projectStartPrompt();
   } catch (e) {
     throw e;
   } finally {
@@ -197,6 +202,13 @@ function ejsRender() {
       })
     })
   })
+}
+
+function projectStartPrompt() {
+  console.log("\n您可以通过执行以下命令启动项目：\n");
+  console.log(colors.cyan(selectTemplateInfo.dependence));
+  console.log(colors.cyan(selectTemplateInfo.run));
+  console.log('\n祝您编码愉快！')
 }
 
 module.exports = init;

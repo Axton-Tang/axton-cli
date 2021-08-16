@@ -1,11 +1,4 @@
-# `utils`
+# `@axton-cli/utils`
 
-> TODO: description
+> axton-cli 脚手架工具库模块
 
-## Usage
-
-```
-const utils = require('utils');
-
-// TODO: DEMONSTRATE API
-```

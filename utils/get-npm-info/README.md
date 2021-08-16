@@ -1,11 +1,4 @@
-# `get-npm-info`
+# `@axton-cli/get-npm-info`
 
-> TODO: description
+> axton-cli 脚手架获取 npm 信息模块
 
-## Usage
-
-```
-const getNpmInfo = require('get-npm-info');
-
-// TODO: DEMONSTRATE API
-```

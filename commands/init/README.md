@@ -1,11 +1,4 @@
 # `@axton-cli/init`
 
-> TODO: description
+> axton-cli 脚手架 init 命令执行模块
 
-## Usage
-
-```
-const init = require('@axton-cli/init');
-
-// TODO: DEMONSTRATE API
-```

@@ -11,7 +11,6 @@ const commander = require('commander');
 
 const pkg = require('../package.json');
 const log = require('@axton-cli/log');
-const init = require('@axton-cli/init');
 const exec = require('@axton-cli/exec');
 
 const {
@@ -23,6 +22,9 @@ const program = new commander.Command();
 
 async function core() {
   try {
+		if (!process.argv.slice(2).length) {
+			showCliInfo();
+		}
 		await prepare();
 		registerCommand();
 	} catch(e) {
@@ -31,6 +33,21 @@ async function core() {
 			console.log(e);
 		}
 	}
+}
+
+function showCliInfo() {
+	console.log(colors.cyan("欢迎使用 axton-cli 脚手架！"));
+	console.log(colors.cyan("开发者："), "Axton Tang");
+	console.log(colors.cyan("N p m： "), colors.underline("https://www.npmjs.com/package/@axton-cli/core"));
+	console.log(colors.cyan("Github："), colors.underline("https://github.com/Axton-Tang/axton-cli"));
+	console.log(colors.cyan(`
+  ##   #    # #####  ####  #    #        ####  #      # 
+ #  #   #  #    #   #    # ##   #       #    # #      # 
+#    #   ##     #   #    # # #  # ##### #      #      # 
+######   ##     #   #    # #  # #       #      #      # 
+#    #  #  #    #   #    # #   ##       #    # #      # 
+#    # #    #   #    ####  #    #        ####  ###### # 
+	\n`));
 }
 
 async function prepare() {
@@ -54,6 +71,13 @@ function registerCommand () {
 		.command('init [projectName]')
 		.option('-f, --force', '是否强制初始化项目')
 		.action(exec);
+	
+	program
+		.command('info')
+		.description('查看脚手架信息')
+		.action(() => {
+			showCliInfo();
+		})
 	
 	// 开启 debug 模式
 	program.on('option:debug', () => {
